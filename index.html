@@ -1,73 +1,135 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dinebees | Dining Out, Reimagined</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dinebees | Join the Buzz</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
   <style>
-    body { font-family: 'Barlow', sans-serif; }
-    h1, h2, h3, .gilroy { font-weight: 700; }
+    body {
+      font-family: 'Barlow', sans-serif;
+    }
+    .countdown-fomo {
+      background: #ff3b30;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      font-weight: bold;
+      animation: pulseFomo 1.5s infinite;
+      box-shadow: 0 0 10px rgba(255, 59, 48, 0.4);
+    }
+    @keyframes pulseFomo {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.07); }
+    }
+    .testimonial-carousel {
+      display: flex;
+      gap: 1.5rem;
+      width: max-content;
+      animation: slideLeft 40s linear infinite;
+    }
+    @keyframes slideLeft {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .testimonial-card {
+      min-width: 280px;
+      background: white;
+      padding: 1rem;
+      border-radius: 1rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+    .dark .testimonial-card {
+      background-color: #1e1e1e;
+      color: #f3f3f3;
+    }
   </style>
 </head>
-<body class="bg-white text-gray-900">
-  <section class="bg-gradient-to-br from-orange-100 to-orange-200 py-20 text-center px-4">
-    <h1 class="text-4xl md:text-5xl font-bold mb-4 gilroy">Dine Out. Meet People. Never Settle for Boring Meals Again.</h1>
-    <p class="text-lg max-w-2xl mx-auto">Dinebees helps you discover Hyderabad’s best cafes with people who match your vibe. No more awkward solo meals or cancelled plans. Just real food, real people, and real fun.</p>
-    <a href="#" class="mt-8 inline-block bg-black text-white text-lg px-6 py-3 rounded-full hover:bg-gray-800 transition">Join the Waitlist</a>
-    <p class="text-sm text-gray-700 mt-2">Only 500 early spots. Hyderabad only. No spam, just food & good times.</p>
+<body class="bg-white text-gray-900 dark:bg-[#0d0d0d] dark:text-white transition-all duration-500">
+
+  <!-- Header -->
+  <header class="flex items-center justify-between px-6 py-6">
+    <img src="bee.webp" alt="Bee Mascot" class="w-16 animate-bounce" />
+    <img src="logo.webp" alt="Dinebees Logo" class="w-36" />
+  </header>
+
+  <!-- Hero Section -->
+  <section class="text-center py-20 px-6 bg-gradient-to-br from-[#fff3cc] to-[#ffe680] dark:from-[#1a1a1a] dark:to-[#333]">
+    <h1 class="text-5xl font-extrabold leading-tight mb-4">Plan Less. Dine More. Vibe Always.</h1>
+    <p class="text-xl max-w-2xl mx-auto mb-6">Hyderabad’s freshest way to meet new people, visit trending cafés, and make food fun again.</p>
+
+    <div class="countdown-fomo mx-auto w-max text-sm mb-4" id="slotsDisplay">
+      🚨 Only 94 early slots left!
+    </div>
+
+    <button onclick="document.getElementById('emailForm').classList.remove('hidden')" 
+            class="bg-[#fac140] text-black font-semibold px-8 py-4 rounded-full hover:bg-yellow-300 shadow-xl transition-all text-lg">Join the Buzz</button>
+
+    <div id="emailForm" class="hidden mt-6 max-w-md mx-auto bg-white dark:bg-[#1e1e1e] p-6 rounded-xl shadow-md">
+      <form action="https://formspree.io/f/xwkgywok" method="POST">
+        <label for="email" class="block text-lg font-semibold mb-2">Enter your email</label>
+        <input type="email" name="email" id="email" required placeholder="you@example.com"
+               class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-[#2b2b2b] text-black dark:text-white mb-4">
+        <button type="submit"
+                class="bg-[#fac140] text-black font-semibold px-6 py-3 rounded-full hover:bg-yellow-300 transition-all w-full">Get Waitlisted</button>
+        <p class="text-xs text-gray-500 mt-3">No spam. Just food and vibes.</p>
+      </form>
+    </div>
   </section>
 
-  <section class="py-16 px-4 text-center">
-    <h2 class="text-3xl font-bold mb-10 gilroy">Why Everyone’s Buzzing About Dinebees 🐝</h2>
-    <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-8">
-      <div>
-        <div class="text-4xl">🍜</div>
-        <h3 class="text-xl font-semibold mt-4">Try More Dishes</h3>
-        <p>Split the bill and explore the full menu — not just one boring dish.</p>
+  <!-- Why Dinebees Section -->
+  <section class="py-20 px-6 text-center">
+    <h2 class="text-4xl font-bold mb-12">Why Everyone’s Buzzing 🐝</h2>
+    <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto text-left">
+      <div class="p-6 rounded-xl shadow-lg hover:shadow-xl transition bg-white dark:bg-[#1e1e1e]">
+        <h3 class="text-xl font-semibold mb-2">Experience the Vibe</h3>
+        <p class="text-gray-600 dark:text-gray-300">From quiet cafés to vibey diners — Dinebees curates the whole experience, not just the food.</p>
       </div>
-      <div>
-        <div class="text-4xl">🪑</div>
-        <h3 class="text-xl font-semibold mt-4">Experience the Vibe</h3>
-        <p>The best cafes are meant to be experienced — not just ordered from.</p>
+      <div class="p-6 rounded-xl shadow-lg hover:shadow-xl transition bg-white dark:bg-[#1e1e1e]">
+        <h3 class="text-xl font-semibold mb-2">Meet Like-Minded People</h3>
+        <p class="text-gray-600 dark:text-gray-300">Dine with Gen-Zs, hostel newbies, expats, and foodies just like you. One seat changes your social circle.</p>
       </div>
-      <div>
-        <div class="text-4xl">💬</div>
-        <h3 class="text-xl font-semibold mt-4">Meet Foodies Like You</h3>
-        <p>Find people who love biryani, bao buns, or brunch as much as you do.</p>
+      <div class="p-6 rounded-xl shadow-lg hover:shadow-xl transition bg-white dark:bg-[#1e1e1e]">
+        <h3 class="text-xl font-semibold mb-2">Try More Dishes</h3>
+        <p class="text-gray-600 dark:text-gray-300">Share plates. Try everything. You’ll never be stuck with just one boring main course again.</p>
       </div>
     </div>
   </section>
 
-  <section class="bg-gray-100 py-16 px-4 text-center">
-    <h2 class="text-3xl font-bold mb-10 gilroy">Dining Out, Now Reimagined ✨</h2>
-    <div class="max-w-4xl mx-auto space-y-6 text-lg">
-      <p><strong>Step 1:</strong> Sign up & set your food vibe – Veg? Non-veg? Café hopper? Let us know.</p>
-      <p><strong>Step 2:</strong> Get matched with hangouts at the hottest restaurants nearby.</p>
-      <p><strong>Step 3:</strong> Show up, dine out, vibe out – it’s that simple.</p>
+  <!-- Testimonials -->
+  <section class="bg-[#fef9e7] dark:bg-[#121212] py-16 px-6">
+    <h2 class="text-3xl font-bold text-center mb-10">Real People. Real Stories. Real Vibes. 💬</h2>
+    <div class="overflow-hidden w-full max-w-7xl mx-auto">
+      <div class="testimonial-carousel">
+        <div class="testimonial-card"><p>"Met 2 new friends, tried 4 new dishes. Vibe: 10/10."</p><p class="mt-2 text-sm text-gray-500">— Mansi, MBA at ISB</p></div>
+        <div class="testimonial-card"><p>"Dinebees made solo weekends feel like group chats IRL."</p><p class="mt-2 text-sm text-gray-500">— Rahul, Techie in Hitech City</p></div>
+        <div class="testimonial-card"><p>"Never felt awkward walking into a new café again."</p><p class="mt-2 text-sm text-gray-500">— Ananya, Artist</p></div>
+        <div class="testimonial-card"><p>"Every hangout turned into an unexpected memory."</p><p class="mt-2 text-sm text-gray-500">— Kunal, Product Intern</p></div>
+        <div class="testimonial-card"><p>"I came for the food. I stayed for the people."</p><p class="mt-2 text-sm text-gray-500">— Sneha, Hostel Resident</p></div>
+      </div>
     </div>
   </section>
 
-  <section class="py-16 px-4 text-center bg-white">
-    <blockquote class="italic text-lg max-w-xl mx-auto mb-4">"I used to scroll Zomato alone every Saturday. Now? I pick a café, join a hangout, and actually enjoy my weekends."</blockquote>
-    <p class="font-semibold mb-4">— Ritika, Early User</p>
-    <p class="text-xl font-bold">Early Access Only.</p>
-    <p class="mb-6">We’re opening Dinebees in Hyderabad with limited slots. Be part of the city’s first dining-out social club.</p>
-    <a href="#" class="inline-block bg-orange-500 text-white text-lg px-6 py-3 rounded-full hover:bg-orange-600 transition">Join the Waitlist</a>
-  </section>
-
-  <section class="bg-black text-white py-16 text-center px-4">
-    <h2 class="text-3xl font-bold mb-4 gilroy">Your Table’s Waiting. Literally. 🪑</h2>
-    <p class="mb-4">Dinebees is not just an app. It’s how Hyderabad eats out now.<br>Come for the food, stay for the people.</p>
-    <a href="#" class="inline-block bg-white text-black text-lg px-6 py-3 rounded-full hover:bg-gray-300 transition">Join the Waitlist Now</a>
-    <p class="text-sm text-gray-400 mt-2">First 500 get exclusive invites, early hangout access, and insider perks.</p>
-  </section>
-
-  <footer class="bg-gray-900 text-white text-center py-6 text-sm">
-    <p>© 2025 Dinebees by Dinegozz Technologies. Built with ❤️ in Hyderabad</p>
-    <p>About | Contact | Instagram | Terms</p>
+  <!-- Footer -->
+  <footer class="bg-black text-white text-center py-6 text-sm mt-10">
+    <p>Dinebees by Dinego Technologies Private Limited</p>
   </footer>
+
+  <script>
+    let slots = 94;
+    const display = document.getElementById('slotsDisplay');
+    setInterval(() => {
+      if (slots > 80) {
+        slots -= Math.floor(Math.random() * 2);
+        display.textContent = `🚨 Only ${slots} early slots left!`;
+      }
+    }, 5000);
+  </script>
 </body>
 </html>
